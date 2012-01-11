@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           bro3_timer
-// @version        1.38
+// @version        1.39
 // @namespace      http://blog.livedoor.jp/froo/
 // @include        http://*.3gokushi.jp/*
 // @include        http://*.1kibaku.jp/*
@@ -12,7 +12,7 @@
 //         作業完了時刻が来たら通知（alert/popup）
 //         各ページ右下「タイマー」リンクで登録情報確認
 
-var VERSION = "1.38";
+var VERSION = "1.39";
 var DIST_URL = "http://blog.livedoor.jp/froo/archives/51423697.html";
 var LOCAL_STORAGE = "bro3_timer";
 
@@ -237,7 +237,8 @@ function getUserProf() {
 		var item = landElems.snapshotItem(i);
 		
 		if (!isLandList) {
-			if (trim(getChildElement(item, 0).innerHTML) == "名前") {
+			var firstElem = getChildElement(item, 0);
+			if (firstElem && trim(firstElem.innerHTML) == "名前") {
 				isLandList = true;
 			}
 			continue;
