@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           bro3_timer
-// @version        1.39
+// @version        1.40
 // @namespace      http://blog.livedoor.jp/froo/
 // @include        http://*.3gokushi.jp/*
 // @include        http://*.1kibaku.jp/*
@@ -12,7 +12,7 @@
 //         作業完了時刻が来たら通知（alert/popup）
 //         各ページ右下「タイマー」リンクで登録情報確認
 
-var VERSION = "1.39";
+var VERSION = "1.40";
 var DIST_URL = "http://blog.livedoor.jp/froo/archives/51423697.html";
 var LOCAL_STORAGE = "bro3_timer";
 
@@ -1164,6 +1164,7 @@ function getMyXY() {
 	};
 
 	var nowLoc = $x('id("gnavi")//a[contains(@href,"map.php")]');
+	if (!nowLoc) nowLoc = $x('id("gNav")//a[contains(@href,"map.php")]');
 	if (!nowLoc) return null;
 
 	var xy = nowLoc.href.match(/x=([\-0-9]+)&y=([\-0-9]+)/i);
